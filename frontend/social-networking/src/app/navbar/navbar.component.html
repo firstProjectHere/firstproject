@@ -1,0 +1,106 @@
+<!--nav bar for only profile-->
+<nav class="navbar sticky-top navbar-dark bg-dark navbar-expand-lg">
+  <a class="navbar-brand" href="/home">SocialApp</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto ">
+
+      
+      <li class="nav-item">
+        <a id="anchor" class="nav-link" id="username" href="/profile">{{firstname}}</a>
+      </li>
+
+      <li class="nav-item">
+        <a id="anchor" class="nav-link" href="/home">Home</a>
+      </li>
+
+      <li class="nav-item">
+          <a id="anchor" class="nav-link" href="/chat">Chat</a>
+      </li>
+
+      <li class="nav-item">
+        <a  id="anchor" class="nav-link" href="/chatting">Chatting</a>
+      </li>
+     <!-- <li class="nav-item">
+        <a class="nav-link">Notification</a>
+      </li>
+      -->
+      <li class="nav-item dropdown">
+        <a id="anchor" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Activity Log</a>
+          <a class="dropdown-item" href="#">Settings</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="logout()">Logout</a>
+        </div>
+      </li>
+
+            <!--searching for a friend-->
+            <form autocomplete="off" class="form-inline my-2 my-lg-0" #searchFriend="ngForm" (ngSubmit)="findfriend(searchFriend.value)">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search someone here" aria-label="Search" name="searchuser" ngModel>
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="submit">Search</button>
+           </form>
+              <!-- <span id="searchResult" *ngIf = "flag1">{{friendName}}</span> -->
+              <!--end of searching-->
+
+    </ul>
+  </div>
+</nav>
+
+<!-- showing search result in this card -->
+<div class="container-fluid" id="card" *ngIf= "flag1">
+  <div class="row justify-content-end">
+    <div class="col-md-3 offset-md-3">
+        <div class="card">
+            <div class="card-body">
+
+                <div *ngIf= "value; else elseBlock">
+                    <a href="/userprofile"><u>{{msg}}</u></a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   <button type="button" id="add_friend_button" class="btn btn-secondary btn-sm"><i class="fa fa-user-plus" id="user_icon" aria-hidden="true"></i>Add Friend</button>
+                </div>
+
+                  <ng-template #elseBlock>
+                      {{msg}}
+                  </ng-template>
+
+            </div>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="float-right position-absolute clearfix">
+<div class="container" style="min-width: 440px;">
+<div class="row">
+<div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      {{friendName}}
+    </div>
+  </div>
+</div>
+</div>
+</div> -->
+<!--nav bar ends here-->
+
+<!-- <div class="card">
+    <div class="card-header">
+      Featured
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Special title treatment</h5>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div> -->
+<!-- 
+
+  <ul class="list-group" *ngIf = "flag1" id="search">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        {{friendName}}
+        <span class="badge badge-primary badge-pill">14</span>
+      </li>
+   </ul> -->

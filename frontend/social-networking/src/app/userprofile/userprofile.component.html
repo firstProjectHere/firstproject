@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+
+<h2>Welcome to the profile of <b> {{friendName}}, </b> </h2>
+
+<br><br><br><br><br><br><br><br><br><br>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Send Request
+</button>
+
+<!-- Modal -->
+<div  *ngIf='flagBooleanDropDown'>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Do you want to send request?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="sendingnames()">confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div *ngIf='flagBooleanButton'>
+  <h3>{{flag}}</h3>
+</div>

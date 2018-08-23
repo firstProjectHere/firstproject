@@ -1,0 +1,69 @@
+<app-navbar></app-navbar>
+
+
+<div class="container">
+ <div class="row">
+   <div class="col-md-12">
+     <div class="shadow bg-white rounded">
+        <div class="d-flex justify-content-center"><b class="fa fa-pencil">  Compose Post</b></div>
+          <form id="postInfo" #postData="ngForm" (ngSubmit)="postUpload(postData.value)">          
+            <textarea class="form-control" aria-label="With textarea" placeholder="Write something here..." name = 'postdata' ngModel></textarea>
+            <select class="btn btn-light" style="width:20%;" name="access" ngModel>
+                <option value="" disabled>Who should see this?</option>
+              <option value="public" selected>Public</option>
+              <option value="friend">Friends</option>
+              <option value="private">Private</option>
+            </select>
+            <button type="submit" class="btn btn-primary" style="width:80%;">Post</button>
+          </form>
+
+          <!--extra little space between post and news-->
+          <div class="space"></div>
+
+          <!--card to display the post that user has just posted-->
+          <div class="card" *ngIf="flag">
+            <div *ngFor= "let showpost of displayingPost">
+              <h3 class="card-header">{{showpost.message.username}}</h3>
+              <div class="card-body">
+                <h6 class="card-title">{{showpost.message.created_at | date: 'shortTime'}}&nbsp;{{showpost.message.created_at | date}}</h6>
+                <p class="card-text">{{showpost.message.post_desc}}</p>
+                <a href="#" class="btn btn-primary">Like</a>
+              </div>
+              <!--extra little space between post and news-->
+              <div class="lilSpace"></div>
+            </div>
+          </div>
+           <!--card ends here-->
+
+           <!--extra little space between post and news-->
+         <!-- <div class="lilSpace"></div> -->
+
+           <!--card when no post to show-->
+          <div class="card" *ngIf="flagPostWhenValueIsZero">
+            <div class="card-body">
+              <p class="card-text">No posts to show</p>
+            </div>
+         </div>
+           <!--card no post to show ends here-->
+           
+          <!--card for post coming from backend-->
+      <div *ngIf="flagPostWhenValueIsOne">
+        <div *ngFor="let posts of postArray">
+          <div class="card">
+            <h3 class="card-header">{{posts.username}}</h3>
+            <div class="card-body">
+              <h6 class="card-title">{{posts.created_at | date:'shortTime'}}&nbsp;{{posts.created_at | date}}</h6>
+              <p class="card-text">{{posts.post_desc}}</p>
+              <a href="#" class="btn btn-primary">Like</a>
+            </div>
+          </div>
+           <!--extra little space between post and news-->
+         <div class="lilSpace"></div>
+        </div>
+      </div>
+         <!--card ends here--> 
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+.container{
+    padding: 0px;
+    margin: 0%;
+}
+
+.card{
+    margin: 5px;
+    overflow: scroll;
+}
+
+.box{
+    height: 100%;
+    border: 1px solid black;
+    margin-top: 5px;
+}
+
+.board{
+    height: 100%;
+    border: 1px solid black;
+    padding: 10px;
+}

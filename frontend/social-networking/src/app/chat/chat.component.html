@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="list-group" style="height: 500%;">
+                <button type="button" class="list-group-item list-group-item-action disabled" style="background-color: #007bff; color: white">
+                   <b>Messenger</b>
+                </button>
+                <button type="button" class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let friends of friend" (click)="chatWithUser(friends)">{{friends}}<span class="badge badge-primary badge-pill">14</span></button>
+            </div>      
+        </div>
+        <div class="col-md-8">
+            <div class="box" *ngIf="displayChatBox">
+                 <h3>Start your conversation here with {{fnd}}</h3>
+                    <div class="card" style="height: 40%;">
+                        <div class="card-body" *ngFor="let message of messages">
+                            {{message.msgFrom}}: {{message.message}} <small>{{message.created_at | date:"shortTime"}}</small>
+                        </div>
+                    </div>
+                    <form #message="ngForm" (ngSubmit)="textMessage(message.value)">
+                            <input type="text" class="form-control" name="msg" placeholder="type your message" ngModel>
+                            <button type="submit" value="send" class="btn btn-primary">Send</button>
+                      </form>
+            </div> 
+            
+            <!-- random text before user select his friend to chat -->
+            <div class="board" *ngIf="displayRandomText">
+                <h4>Select your friend to start conversation</h4>
+            </div>
+        </div>
+     </div>
+</div>
